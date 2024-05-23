@@ -16,3 +16,7 @@ test("should return 0 if the string is empty", () => {
 test("should find the sum even if the numbers are separated by new line", () => {
   expect(addNumbersInString("1\n2,3\n4")).toBe(10);
 });
+
+test("should find the sum even if the numbers are separated by custom delimiter", () => {
+  expect(addNumbersInString("//;\n1;2;3")).toBe(6);
+});

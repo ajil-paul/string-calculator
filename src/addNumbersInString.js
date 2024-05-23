@@ -1,7 +1,16 @@
 const getNumbersFromString = (string = "") => {
-  const stringWithoutNewLines = string.replaceAll("\n", ",");
+  const givenDelimiter = getDelimiter(string);
+  if (!!givenDelimiter) string = string.slice(3);
 
-  return stringWithoutNewLines.trim().split(",").map(Number);
+  const delimiter = givenDelimiter ?? ",";
+  const stringWithoutNewLines = string.replaceAll("\n", delimiter);
+
+  return stringWithoutNewLines.trim().split(delimiter).map(Number);
+};
+
+const getDelimiter = (string = "") => {
+  if (string.startsWith("//")) return string[2];
+  else return null;
 };
 
 const addNumbersInString = (string = "") => {
