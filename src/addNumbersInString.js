@@ -15,6 +15,10 @@ const getDelimiter = (string = "") => {
 
 const addNumbersInString = (string = "") => {
   const numbers = getNumbersFromString(string);
+  const negativeNumbers = numbers.filter((number) => number < 0);
+
+  if (negativeNumbers.length)
+    throw new Error(`Negatives not allowed: ${negativeNumbers.join(", ")}`);
 
   return numbers.reduce((acc, number) => acc + number, 0);
 };

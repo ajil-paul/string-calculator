@@ -20,3 +20,9 @@ test("should find the sum even if the numbers are separated by new line", () => 
 test("should find the sum even if the numbers are separated by custom delimiter", () => {
   expect(addNumbersInString("//;\n1;2;3")).toBe(6);
 });
+
+test("should throw an error if there are negative numbers", () => {
+  expect(() => addNumbersInString("2,-2,3,-3")).toThrow(
+    "Negatives not allowed: -2, -3"
+  );
+});
