@@ -1,5 +1,11 @@
+const getNumbersFromString = (string = "") => {
+  const stringWithoutNewLines = string.replaceAll("\n", ",");
+
+  return stringWithoutNewLines.trim().split(",").map(Number);
+};
+
 const addNumbersInString = (string = "") => {
-  const numbers = string.trim().split(",").map(Number);
+  const numbers = getNumbersFromString(string);
 
   return numbers.reduce((acc, number) => acc + number, 0);
 };

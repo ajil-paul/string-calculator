@@ -1,6 +1,6 @@
 const addNumbersInString = require("./addNumbersInString");
 
-test("should return sum of multiple numbers in the string", () => {
+test("should find the sum of multiple numbers in the string", () => {
   expect(addNumbersInString("1,5")).toBe(6);
 });
 
@@ -11,4 +11,8 @@ test("should return the number if there is only one number present", () => {
 test("should return 0 if the string is empty", () => {
   expect(addNumbersInString()).toBe(0);
   expect(addNumbersInString("")).toBe(0);
+});
+
+test("should find the sum even if the numbers are separated by new line", () => {
+  expect(addNumbersInString("1\n2,3\n4")).toBe(10);
 });
