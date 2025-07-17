@@ -50,8 +50,16 @@ RSpec.describe StringCalculator do
     context "when string contains new lines between numbers instead of commas" do
       let(:numbers_string) { "1\n2,3,\n4" }
 
-      it "should treat the new line as a separator and returns sum of all numbers" do
+      it "treats the new line as a separator and returns sum of all numbers" do
         expect(result).to eq(10)
+      end
+    end
+
+    context "when string contains delimiter at the starting" do
+      let(:numbers_string) { "//;\n1;2\n3" }
+
+      it "separates the numbers using the delimiter and return its total" do
+        expect(result).to eq(6)
       end
     end
   end
