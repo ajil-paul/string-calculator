@@ -86,5 +86,13 @@ RSpec.describe StringCalculator do
         expect { result }.to raise_error(StandardError, "Negative numbers not allowed -2, -4")
       end
     end
+
+    context "when string contains numbers greater than 1000" do
+      let(:numbers_string) { "//$\n1$1000$1001$999" }
+
+      it "ignores numbers greater than 1000 and returns sum of rest of the numbers" do
+        expect(result).to eq(2000)
+      end
+    end
   end
 end
