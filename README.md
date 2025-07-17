@@ -19,4 +19,4 @@ $ bundle exec rspec
 
 ## Test results
 
-[![Test Status](https://github.com/ajil-paul/string-calculator/actions/workflows/ruby.yml/badge.svg?branch=main)](ttps://github.com/ajil-paul/string-calculator/actions/workflows/ruby.yml/badge.svg?branch=main)
+[![Test Status](https://github.com/ajil-paul/string-calculator/actions/workflows/ruby.yml/badge.svg?branch=main)](https://github.com/ajil-paul/string-calculator/actions/workflows/ruby.yml)
