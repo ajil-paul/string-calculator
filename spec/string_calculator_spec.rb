@@ -62,5 +62,21 @@ RSpec.describe StringCalculator do
         expect(result).to eq(6)
       end
     end
+
+    context "when delimiter is an alphabet" do
+      let(:numbers_string) { "//a\n1a2\n3" }
+
+      it "separates the numbers using the delimiter properly and return its total" do
+        expect(result).to eq(6)
+      end
+    end
+
+    context "when delimiter is a number" do
+      let(:numbers_string) { "//2\n122\n3" }
+
+      it "throws an error with a proper message" do
+        expect { result }.to raise_error(StandardError, "Delimiter is invalid")
+      end
+    end
   end
 end
