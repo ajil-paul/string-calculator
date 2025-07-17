@@ -46,5 +46,13 @@ RSpec.describe StringCalculator do
         expect(result).to eq(37)
       end
     end
+
+    context 'when string contains new lines between numbers instead of commas' do
+      let(:numbers_string) { "1\n2,3,\n4" }
+
+      it 'should treat the new line as a separator and returns sum of all numbers' do
+        expect(result).to eq(10)
+      end
+    end
   end
 end
