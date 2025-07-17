@@ -78,5 +78,13 @@ RSpec.describe StringCalculator do
         expect { result }.to raise_error(StandardError, "Delimiter is invalid")
       end
     end
+
+    context "when string contains negative numbers" do
+      let(:numbers_string) { "//$\n1$-2$3$-4" }
+
+      it "throws an error with a proper message" do
+        expect { result }.to raise_error(StandardError, "Negative numbers not allowed -2, -4")
+      end
+    end
   end
 end
