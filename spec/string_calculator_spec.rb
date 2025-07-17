@@ -102,5 +102,13 @@ RSpec.describe StringCalculator do
         expect(result).to eq(6)
       end
     end
+
+    context "when string contains multiple delimiters" do
+      let(:numbers_string) { "//[*][%%][***]\n1*2%%33***4" }
+
+      it "returns the sum of numbers separated using each delimiter" do
+        expect(result).to eq(40)
+      end
+    end
   end
 end

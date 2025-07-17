@@ -7,7 +7,7 @@ class StringCalculator
     return 0 if numbers.nil? || numbers.empty?
 
     delimiters = ["\n", ","]
-    delimiters << extract_delimiter(numbers) if numbers.start_with?("//")
+    delimiters += extract_delimiters(numbers) if numbers.start_with?("//")
 
     separator_regex = Regexp.union(delimiters)
     extracted_numbers = numbers.split(separator_regex).map(&:to_i)
@@ -18,14 +18,14 @@ class StringCalculator
 
   private
 
-  def extract_delimiter(numbers)
+  def extract_delimiters(numbers)
     header = numbers.split("\n", 2).first
-    delimiter = header.slice(2..)
-    delimiter = header.scan(/\[(.+?)\]/).flatten.first if header.match?(%r{^//\[(.+?)\]})
+    delimiters = [header.slice(2..)]
+    delimiters = header.scan(/\[(.+?)\]/).flatten if header.match?(%r{^//\[(.+?)\]})
 
-    raise StandardError, "Delimiter is invalid" if /\d/.match? delimiter
-
-    delimiter
+    delimiters.each do |delimiter|
+      raise StandardError, "Delimiter is invalid" if /\d/.match? delimiter
+    end
   end
 
   def validate_no_negatives(numbers)
