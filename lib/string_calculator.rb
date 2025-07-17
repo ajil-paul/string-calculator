@@ -21,6 +21,8 @@ class StringCalculator
   def extract_delimiter(numbers)
     header = numbers.split("\n", 2).first
     delimiter = header.slice(2..)
+    delimiter = header.scan(/\[(.+?)\]/).flatten.first if header.match?(%r{^//\[(.+?)\]})
+
     raise StandardError, "Delimiter is invalid" if /\d/.match? delimiter
 
     delimiter

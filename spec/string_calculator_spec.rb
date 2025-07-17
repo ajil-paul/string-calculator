@@ -94,5 +94,13 @@ RSpec.describe StringCalculator do
         expect(result).to eq(2000)
       end
     end
+
+    context "when delimiter contains more than one character wrapped in square brackets" do
+      let(:numbers_string) { "//[***]\n1***2***3" }
+
+      it "extracts the delimiter from the square bracket and returns the sum of numbers separated using it" do
+        expect(result).to eq(6)
+      end
+    end
   end
 end
