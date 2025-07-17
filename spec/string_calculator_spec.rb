@@ -4,22 +4,38 @@ require 'string_calculator'
 
 RSpec.describe StringCalculator do
   describe '#add_numbers' do
-    let(:numbers) { '1,2' }
-    let(:result) { described_class.new.add_numbers(numbers) }
+    let(:numbers_string) { '1,2' }
+    let(:result) { described_class.new.add_numbers(numbers_string) }
 
-    context 'when number string is empty' do
-      let(:numbers) { '' }
+    context 'when string is empty' do
+      let(:numbers_string) { '' }
 
       it 'returns 0' do
         expect(result).to eq(0)
       end
     end
 
-    context 'when number string is nil' do
-      let(:numbers) { nil }
+    context 'when string is nil' do
+      let(:numbers_string) { nil }
 
       it 'returns 0' do
         expect(result).to eq(0)
+      end
+    end
+
+    context 'when string contains 2 numbers separated by comma' do
+      let(:numbers_string) { "2,3" }
+
+      it 'returns sum of given numbers' do
+        expect(result).to eq(5)
+      end
+    end
+
+    context 'when string contains only one number' do
+      let(:numbers_string) { '5' }
+
+      it 'returns that just that number' do
+        expect(result).to eq(5)
       end
     end
   end
